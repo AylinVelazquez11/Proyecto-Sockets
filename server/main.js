@@ -14,6 +14,13 @@ app.get('/', function(req,res){
 y tenemos que hacer que el mensaje venga del navegador web mediante html y JS */ 
 io.on('connection', function(socket){
     console.log('Alguien se ha conectado con socket')
+
+    /*Aquí controlamos los eventos del cliente mediante sockets */
+    socket.emit('messages', {
+        id: 1,
+        texto:"Hola soy un mensaje",
+        autor: "Aylin Velazquez Vargas"
+    });
 });
 
 server.listen(3002, function(){
