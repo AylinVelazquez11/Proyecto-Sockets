@@ -11,14 +11,19 @@ socket.on('messages', function(data){
 /*Creamos un template para que nos imprima el contenido */
 
 function render (data){
+    //reestructuramos esta sección para que se maneje el array
+    //elem: conjunto de cosas
+    //con map recorremos el array
 
+    var html = data.map(function(elem, index){
+        return(`<div>
+            <strong>${elem.autor}</strong>:
+            <em>${elem.texto}</em>
+            </div>`);
 
-var html = `<div>
-                <strong>${data.autor}</strong>:
-                <>${data.texto}</em>
-                </div>`;
+    }).join("");
 
-                document.getElementById('messages').innerHTML=html;
+            document.getElementById('messages').innerHTML=html;
 }
 
 function addMessage(e){
